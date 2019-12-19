@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JS日期测试</title>		
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/dateformat.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			h2{
+				background-color: aquamarine;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>gamecc666</h2>
+		<form action="#" method="get">
+			起始时间:<input type="date" id="start_date"/>
+			终止时间:<input type="date" id="end_date"/>
+			<input type="submit" value="提交"/>
+		</form>
+		<button id="test_date">测试</button>
+		测试整数输入:<input type="number" id="test_number">
+	</body>
+</html>
+<script type="text/javascript">
+$('#test_date').on('click',function(event){
+	let start_date=new Date($('#start_date').val());
+	let end_date=new Date($('#end_date').val());	
+	
+	if(start_date<end_date){
+		alert('开始时间<结束时间');
+	}else{
+		alert('起止时间有误！');
+	}
+	
+	let start_day=start_date.getUTCDay();
+	let start_month=start_date.getUTCMonth();
+	let start_year=start_date.getUTCFullYear();
+	let end=start_date.getDate();
+	
+	//时间格式化
+	let temp=new Date($('#start_date').val()).format("yyyy-MM-dd");
+	console.log(`格式化时间：${temp} ||${typeof(temp)}`);
+	
+	console.log(`开始日期是: ${start_date},结束日期是: ${end_date} ||开始年：${start_year},开始月简写：${start_month} ,开始填简写：${start_day}`);
+})
+</script>
